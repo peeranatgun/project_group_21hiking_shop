@@ -1,0 +1,31 @@
+:root {
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+  --line: #e9ecef;
+}
+
+body {
+  font-family: 'Prompt', -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+  background: #fff;
+}
+
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #111;
+  text-decoration: none;
+}
+
+.letter { letter-spacing: 0.2em; }
+
+.navbar .nav-link { color: #555; }
+.navbar .nav-link:hover,
+.navbar .router-link-exact-active { color: #111; }
+
+.footer-link { color: #6c757d; text-decoration: none; font-size: 0.9rem; }
+.footer-link:hover { color: #111; }
+
+.btn-dark { background: #111; border-color: #111; }
+.btn-dark:hover { background: #333; border-color: #333; }
+
+.card { border: 1px solid var(--line); border-radius: 0.75rem; }

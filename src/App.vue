@@ -1,30 +1,24 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="d-flex flex-column min-vh-100">
+    <!-- แสดงเมนู -->
+    <NavBar />
+
+    <!-- แสดงหน้าเพจ -->
+    <main class="flex-grow-1">
+      <router-view />
+    </main>
+
+    <!-- แสดง Footer -->
+    <AppFooter />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import NavBar from './components/navbar.vue'
+import AppFooter from './components/footer.vue'
 
-nav {
-  padding: 30px;
+export default {
+  name: 'App',
+  components: { NavBar, AppFooter },
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
