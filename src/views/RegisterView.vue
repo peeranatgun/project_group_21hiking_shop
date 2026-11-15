@@ -69,7 +69,7 @@ export default {
       }
       this.loading = true
       try {
-        await api.post('http://localhost/project-21hiking-shop/php_api/auth/register.php', this.form)
+        await api.post('/auth/register.php', this.form)
         this.$router.push({ path: '/login', query: { registered: 1 } })
       } catch (e) {
         this.error = e.response?.data?.error || 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้'

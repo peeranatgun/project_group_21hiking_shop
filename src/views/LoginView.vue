@@ -45,7 +45,7 @@ export default {
       this.error = ''
       this.loading = true
       try {
-        const { data } = await api.post('http://localhost/project-21hiking-shop/php_api/auth/login.php', {
+        const { data } = await api.post('/auth/login.php', {
           email: this.email,
           password: this.password,
         })

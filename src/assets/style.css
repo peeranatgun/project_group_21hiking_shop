@@ -1,31 +1,197 @@
+/* ===== โทนสี B: ขาวนวล + เขียวมอส ===== */
 :root {
-  --bs-body-bg: #ffffff;
-  --bs-body-color: #212529;
-  --line: #e9ecef;
+  --bg: #fafaf7;
+  --sand: #f1f0ea;
+  --ink: #1f2421;
+  --muted: #6b726c;
+  --line: #e7e7e1;
+  --green: #3f5b45;
+  --green-dark: #2f4635;
+
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--ink);
+  --bs-border-color: var(--line);
 }
 
 body {
   font-family: 'Prompt', -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+h1, h2, h3, h4, h5 { letter-spacing: -0.01em; }
+a { color: var(--green); }
+.text-muted { color: var(--muted) !important; }
+
+/* ===== ปุ่ม: ปุ่มเดิมที่ใช้ btn-dark / btn-outline-dark จะกลายเป็นเขียวมอสทั้งเว็บ ===== */
+.btn { border-radius: 0.5rem; }
+
+.btn-dark {
+  --bs-btn-bg: var(--green);
+  --bs-btn-border-color: var(--green);
+  --bs-btn-hover-bg: var(--green-dark);
+  --bs-btn-hover-border-color: var(--green-dark);
+  --bs-btn-active-bg: var(--green-dark);
+  --bs-btn-active-border-color: var(--green-dark);
+  --bs-btn-disabled-bg: var(--green);
+  --bs-btn-disabled-border-color: var(--green);
+}
+
+.btn-outline-dark {
+  --bs-btn-color: var(--green);
+  --bs-btn-border-color: var(--green);
+  --bs-btn-hover-bg: var(--green);
+  --bs-btn-hover-border-color: var(--green);
+  --bs-btn-active-bg: var(--green-dark);
+  --bs-btn-active-border-color: var(--green-dark);
+  --bs-btn-disabled-color: var(--green);
+  --bs-btn-disabled-border-color: var(--green);
+}
+
+.badge.bg-dark { background-color: var(--green) !important; }
+.text-dark { color: var(--ink) !important; }
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 0.2rem rgba(63, 91, 69, 0.15);
+}
+
+/* ===== การ์ด ===== */
+.card {
   background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+/* ===== Navbar ===== */
+.site-nav {
+  background: rgba(250, 250, 247, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
 }
 
 .brand {
   font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #111;
+  letter-spacing: 0.18em;
+  color: var(--green-dark);
   text-decoration: none;
 }
 
-.letter { letter-spacing: 0.2em; }
+.navbar .nav-link { color: var(--muted); font-size: 0.95rem; }
+.navbar .nav-link:hover { color: var(--ink); }
+.navbar .router-link-exact-active { color: var(--green); font-weight: 500; }
 
-.navbar .nav-link { color: #555; }
-.navbar .nav-link:hover,
-.navbar .router-link-exact-active { color: #111; }
+.cart-icon { width: 1.1rem; height: 1.1rem; margin-right: 0.35rem; vertical-align: -0.2em; }
 
-.footer-link { color: #6c757d; text-decoration: none; font-size: 0.9rem; }
-.footer-link:hover { color: #111; }
+/* ===== Footer ===== */
+.site-footer { background: var(--sand); border-top: 1px solid var(--line); }
+.footer-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+.footer-link:hover { color: var(--green); }
 
-.btn-dark { background: #111; border-color: #111; }
-.btn-dark:hover { background: #333; border-color: #333; }
+/* ===== หน้าแรก ===== */
+.hero { background: var(--sand); }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--green);
+}
+.hero-art { border-radius: 1rem; overflow: hidden; aspect-ratio: 4 / 3; background: #e9ede6; }
+.hero-art img, .hero-art svg { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.card { border: 1px solid var(--line); border-radius: 0.75rem; }
+.section { padding: 4rem 0; }
+.feature-num { color: var(--green); font-weight: 600; letter-spacing: 0.1em; font-size: 0.85rem; }
+
+.brand-banner { background: var(--green); color: #fff; border-radius: 1rem; }
+.brand-banner .eyebrow { color: #c9d6cc; }
+
+/* ===== การ์ดสินค้า ===== */
+.product-card { border: 0; background: transparent; }
+.product-card .ratio { border-radius: 0.75rem; overflow: hidden; background: var(--sand) !important; }
+.product-card img { transition: transform 0.4s ease; }
+.product-card:hover img { transform: scale(1.04); }
+
+/* ===== หน้ารายละเอียดสินค้า ===== */
+.bg-sand { background: var(--sand); }
+.sticky-col { position: sticky; top: 5.5rem; }
+
+.size-btn {
+  min-width: 3rem;
+  height: 2.75rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 0.25rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.size-btn:hover { border-color: var(--green); }
+.size-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+.fold { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fold summary {
+  cursor: pointer;
+  padding: 0.9rem 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary::after { content: '+'; color: var(--muted); }
+.fold[open] summary::after { content: '\2212'; }
+.fold .table { --bs-table-bg: transparent; font-size: 0.9rem; }
+
+/* ===== แถบขั้นตอน (ตะกร้า -> จัดส่ง -> สำเร็จ) ===== */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.step { display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+.step-dot {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+}
+.step.active { color: var(--ink); font-weight: 500; }
+.step.active .step-dot,
+.step.done .step-dot { background: var(--green); border-color: var(--green); color: #fff; }
+.step-line { flex: 1; height: 1px; background: var(--line); min-width: 1rem; }
+
+/* ===== ไทม์ไลน์สถานะออเดอร์ ===== */
+.timeline { display: flex; position: relative; margin: 1.5rem 0 1.25rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.8rem;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: var(--line);
+}
+.tl-item { position: relative; flex: 1; text-align: center; font-size: 0.8rem; color: var(--muted); }
+.tl-dot {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0 auto 0.4rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--line);
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+}
+.tl-item.done .tl-dot { background: var(--green); border-color: var(--green); color: #fff; }
+.tl-item.current { color: var(--ink); font-weight: 500; }

@@ -78,7 +78,7 @@ export default {
           payload.current_password = this.pw.current
           payload.new_password = this.pw.next
         }
-        const { data } = await api.put('http://localhost/project-21hiking-shop/php_api/auth/profile.php', payload)
+        const { data } = await api.put('h/auth/profile.php', payload)
         this.$store.commit('setUser', data.user)
         this.pw = { current: '', next: '', confirm: '' }
         this.msg = 'บันทึกข้อมูลแล้ว'

@@ -21,14 +21,14 @@
     <div v-else class="row g-4">
       <div class="col-6 col-md-4 col-lg-3" v-for="p in filtered" :key="p.id">
         <router-link :to="`/products/${p.id}`" class="text-decoration-none text-dark">
-          <div class="card h-100 overflow-hidden">
-            <div class="ratio ratio-1x1 bg-light">
+          <div class="card product-card h-100">
+            <div class="ratio ratio-1x1">
               <img v-if="img(p.image)" :src="img(p.image)" :alt="p.name" class="object-fit-cover" />
               <div v-else class="d-flex align-items-center justify-content-center text-muted small">
                 ไม่มีรูป
               </div>
             </div>
-            <div class="p-3">
+            <div class="pt-3">
               <div class="text-muted small">{{ p.category }}</div>
               <div class="fw-semibold">{{ p.name }}</div>
               <div class="mt-1">
@@ -67,7 +67,7 @@ export default {
   },
   async created() {
     try {
-      const { data } = await api.get('http://localhost/project-21hiking-shop/php_api/products/')
+      const { data } = await api.get('/products/index.php')
       this.products = data
     } catch (e) {
       this.error = 'โหลดสินค้าไม่สำเร็จ กรุณาตรวจสอบว่า Apache/MySQL เปิดอยู่'

@@ -4,6 +4,8 @@
       &larr; {{ isAdmin ? 'กลับไปหน้าจัดการร้าน' : 'คำสั่งซื้อของฉัน' }}
     </router-link>
 
+    <CheckoutSteps v-if="$route.query.success" :current="3" class="mt-4" />
+
     <div v-if="$route.query.success" class="alert alert-success py-2 small mt-3">
       สั่งซื้อสำเร็จ ขอบคุณที่สั่งซื้อกับเรา กรุณาชำระเงินและแนบสลิปด้านล่าง
     </div>
@@ -19,6 +21,8 @@
             <span class="badge" :class="statusClass(order.status)">{{ statusLabel(order.status) }}</span>
           </div>
           <div class="text-muted small mb-3">{{ date(order.created_at) }}</div>
+
+          <OrderTimeline :status="order.status" />
 
           <div v-for="(item, index) in order.items" :key="item.id"
                class="d-flex justify-content-between py-2"
@@ -76,12 +80,15 @@
 </template>
 
 <script>
+import CheckoutSteps from '../components/CheckoutSteps.vue'
+import OrderTimeline from '../components/OrderTimeline.vue'
 import api from '../api'
 import { formatPrice, formatDate, statusLabel, statusClass } from '../utils'
 import { payment } from '../config'
 
 export default {
   name: 'OrderDetailView',
+  components: { CheckoutSteps, OrderTimeline },
   data() {
     return { order: {}, payment, loading: true, uploading: false, error: '', msg: '' }
   },
@@ -114,7 +121,7 @@ export default {
         const fd = new FormData()
         fd.append('order_id', this.order.id)
         fd.append('slip', file)
-        const { data } = await api.post('http://localhost/project-21hiking-shop/php_api/orders/slip.php', fd)
+        const { data } = await api.post('/orders/slip.php', fd)
         this.order.slip_image = data.url
         this.msg = 'แนบสลิปแล้ว รอร้านตรวจสอบ'
       } catch (err) {

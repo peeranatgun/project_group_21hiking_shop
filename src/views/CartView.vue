@@ -1,5 +1,6 @@
 <template>
   <section class="container py-5">
+    <CheckoutSteps :current="1" />
     <h3 class="fw-semibold mb-4">ตะกร้าสินค้า</h3>
 
     <div v-if="!items.length" class="text-center text-muted py-5">
@@ -51,10 +52,12 @@
 </template>
 
 <script>
+import CheckoutSteps from '../components/CheckoutSteps.vue'
 import { formatPrice, imageUrl } from '../utils'
 
 export default {
   name: 'CartView',
+  components: { CheckoutSteps },
   computed: {
     items() { return this.$store.state.cart },
     total() { return this.$store.getters.cartTotal },

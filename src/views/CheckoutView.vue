@@ -1,5 +1,6 @@
 <template>
   <section class="container py-5">
+    <CheckoutSteps :current="2" />
     <h3 class="fw-semibold mb-4">ยืนยันคำสั่งซื้อ</h3>
 
     <div v-if="!items.length" class="text-center text-muted py-5">
@@ -54,11 +55,13 @@
 </template>
 
 <script>
+import CheckoutSteps from '../components/CheckoutSteps.vue'
 import api from '../api'
 import { formatPrice } from '../utils'
 
 export default {
   name: 'CheckoutView',
+  components: { CheckoutSteps },
   data() {
     const u = this.$store.state.user || {}
     return {
@@ -81,7 +84,7 @@ export default {
       this.error = ''
       this.loading = true
       try {
-        const { data } = await api.post('http://localhost/project-21hiking-shop/php_api/orders/index.php', {
+        const { data } = await api.post('/orders/index.php', {
           ...this.form,
           items: this.items.map((i) => ({
             product_id: i.product_id,
@@ -90,7 +93,7 @@ export default {
           })),
         })
         this.$store.commit('clearCart')
-        this.$router.push({ path: `http://localhost/project-21hiking-shop/php_api/orders/${data.order_id}`, query: { success: 1 } })
+        this.$router.push({ path: `/orders/${data.order_id}`, query: { success: 1 } })
       } catch (e) {
         this.error = e.response?.data?.error || 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้'
       } finally {

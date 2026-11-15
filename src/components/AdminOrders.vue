@@ -70,7 +70,7 @@ export default {
     statusLabel,
     async load() {
       try {
-        const { data } = await api.get('http://localhost/project-21hiking-shop/php_api/orders/index.php')
+        const { data } = await api.get('/orders/index.php')
         this.orders = data
       } catch (e) {
         this.error = e.response?.data?.error || 'โหลดคำสั่งซื้อไม่สำเร็จ'

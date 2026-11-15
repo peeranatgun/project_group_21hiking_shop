@@ -38,7 +38,7 @@ export default {
   },
   async created() {
     try {
-      const { data } = await api.get('http://localhost/project-21hiking-shop/php_api/orders/')
+      const { data } = await api.get('/orders/')
       this.orders = data
     } catch (e) {
       this.error = e.response?.data?.error || 'โหลดคำสั่งซื้อไม่สำเร็จ'
