@@ -4,8 +4,8 @@
     <div class="container py-5">
       <div class="row align-items-center g-5 py-lg-4">
         <div class="col-lg-6">
-          <p class="eyebrow mb-3">Hiking Apparel</p>
-          <h1 class="display-5 fw-semibold mb-3">เสื้อเดินป่า<br />เบา แห้งเร็ว ใส่สบาย</h1>
+          <p class="eyebrow mb-3">Arc'teryx</p>
+          <h1 class="display-5 fw-semibold mb-3"> Arc'teryx Beta AR <br />Waterproof & Lightweight</h1>
           <p class="text-muted mb-4">เลือกเสื้อที่เหมาะกับทุกเส้นทางของคุณ ตั้งแต่ทริปวันเดียวจนถึงเดินยาวหลายวัน</p>
           <div class="d-flex gap-2 flex-wrap">
             <router-link class="btn btn-dark px-4 py-2" to="/products">ดูสินค้าทั้งหมด</router-link>
@@ -15,7 +15,8 @@
 
         <div class="col-lg-6">
           <div class="hero-art">
-            <img src="/src/img/hero.jpg" alt="เสื้อเดินป่า" />
+            <!-- แสดงฉากภูเขา 3D แทนรูปภาพ hero.jpg -->
+            <MountainScene3D />
           </div>
         </div>
       </div>
@@ -70,9 +71,13 @@
 <script>
 import api from '../api'
 import { formatPrice, imageUrl } from '../utils'
+import MountainScene3D from '@/components/MountainScene3D.vue'
 
 export default {
   name: 'HomeView',
+  components: {
+    MountainScene3D, // <-- จุดสำคัญที่เพิ่มเข้ามาเพื่อให้ Vue รู้จัก Component
+  },
   data() {
     return {
       latest: [],
