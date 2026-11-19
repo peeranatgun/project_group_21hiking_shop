@@ -4,8 +4,12 @@ export function formatPrice(n) {
 }
 
 // ถ้าใน DB เก็บเป็นลิงก์เต็ม (http...) จะใช้รูปนั้น ถ้าไม่มีจะคืนค่า null เพื่อแสดงกล่องว่างแทน
+// รองรับทั้งลิงก์เต็ม (http...) และ path จากโฟลเดอร์ uploads/
 export function imageUrl(image) {
-  return image && /^https?:\/\//.test(image) ? image : null
+  if (!image) return null
+  if (/^https?:\/\//.test(image)) return image
+  const cleanPath = image.replace(/^\/+/, '')
+  return `http://localhost/project_group_21hiking_shop/php_api/${cleanPath}`
 }
 
 // สถานะคำสั่งซื้อ
